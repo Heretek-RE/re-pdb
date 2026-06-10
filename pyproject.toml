@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "re-pdb"
+version = "0.1.0"
+description = "MCP server for downloading debug PDBs from the Microsoft Symbol Server (msdl) and (opt-in) custom mirrors. Never writes outside the user-specified output path; never republishes."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+keywords = [
+    "mcp",
+    "pdb",
+    "symbols",
+    "debug",
+    "microsoft-symbol-server",
+    "msdl",
+    "binary-triage",
+    "reverse-engineering",
+]
+authors = [{name = "John"}]
+dependencies = [
+    "mcp[cli]>=1.2",
+    "pydantic>=2.6",
+    "httpx>=0.27",
+]
+
+[project.scripts]
+re-pdb = "re_pdb.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
